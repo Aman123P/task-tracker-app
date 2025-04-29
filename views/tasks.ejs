@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Tasks</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+    <div class="container">
+  <h2>Tasks for Project</h2>
+<p>Project ID: <%= projectId %></p>
+  <form action="/projects/<%= projectId %>/tasks" method="POST">
+    <input type="text" name="title" placeholder="Title" required />
+    <textarea name="description" placeholder="Description"></textarea>
+    <select name="status">
+      <option>Pending</option>
+      <option>In Progress</option>
+      <option>Completed</option>
+    </select>
+    <button type="submit">Add Task</button>
+  </form>
+
+  <ul>
+  <% tasks.forEach(task => { %>
+    <li>
+      <strong><%= task.title %></strong> - <%= task.status %><br/>
+      <em class="task-description"><%= task.description %></em>
+
+
+      <a href="/tasks/<%= task._id %>/edit">Edit</a>
+
+      <form action="/tasks/<%= task._id %>/delete" method="POST" style="display:inline;">
+        <button type="submit">Delete</button>
+      </form>
+    </li>
+  <% }) %>
+</ul>
+
+
+  <a href="/dashboard">Back to Dashboard</a>
+  </div>
+</body>
+</html>

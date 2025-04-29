@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="/style.css" />
+  <title>Your Projects</title>
+</head>
+<body>
+    <div class="container">
+  <h2>Your Projects</h2>
+
+  <form action="/projects" method="POST">
+    <input type="text" name="name" placeholder="Project Name" required />
+    <button type="submit">Add Project</button>
+  </form>
+
+ <ul>
+  <% projects.forEach(project => { %>
+    <li>
+      <%= project.name %>
+
+      <!-- View Tasks Button (GET method) -->
+      <form action="/projects/<%= project._id %>/tasks" method="GET" style="display:inline;">
+        <button type="submit">View Tasks</button>
+      </form>
+
+    </li>
+  <% }) %>
+</ul>
+
+
+
+
+  <a href="/dashboard">Back to Dashboard</a>
+    </div>
+</body>
+</html>
