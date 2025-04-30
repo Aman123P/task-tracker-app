@@ -16,7 +16,7 @@ module.exports = async (req, res, next) => {
       return res.redirect('/login');
     }
 
-    req.user = decoded; // ya req.user = user if you need full user
+    req.user = decoded; // ya req.user = user to get full user
     next();
   } catch (err) {
     console.error('Auth error:', err);

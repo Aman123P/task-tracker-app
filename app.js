@@ -1,5 +1,5 @@
-// app.js
-console.log('✅ app.js is running!');
+
+
 
 const express = require('express');
 const mongoose = require('mongoose');
@@ -12,16 +12,16 @@ require('dotenv').config();
 const app = express();
 connectDB();
 
-// Middlewares
+
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static('public'));
 
-// View Engine
+
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
-// Session Setup
+
 app.use(
   session({
     secret: 'keyboard cat',
@@ -31,8 +31,8 @@ app.use(
   })
 );
 
-// Routes placeholder
-const authMiddleware = require('./middleware/authMiddleware'); // make sure path sahi ho
+
+const authMiddleware = require('./middleware/authMiddleware'); 
 const dashboardController = require('./controllers/dashboardController');
 
 app.get('/', authMiddleware, dashboardController.getDashboard);
@@ -54,10 +54,9 @@ app.get('/test-project', (req, res) => {
 });
 
 
-// Server start
 const PORT = process.env.PORT || 5500;
 app.get("/test", (req, res) => {
-  res.send("✅ Route is working!");
+  res.send(" Route is working!");
 });
 
 app.listen(PORT, () => {

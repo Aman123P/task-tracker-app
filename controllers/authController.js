@@ -52,7 +52,9 @@ exports.postLogin = (req, res) => {
         user.sessionToken = token;
         user.save().then(() => {
           req.session.token = token;
-          res.redirect('/dashboard');
+          console.log('Session token on login:', req.session.token);
+
+          res.redirect('/');
         });
       });
     })

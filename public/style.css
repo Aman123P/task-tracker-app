@@ -1,11 +1,11 @@
-/* Reset */
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* Body */
+
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background: linear-gradient(to right, #dbeafe, #e0f2fe);
@@ -15,7 +15,6 @@ body {
   padding: 40px 20px;
 }
 
-/* Container */
 .container {
   background-color: #ffffff;
   padding: 30px;
@@ -25,14 +24,14 @@ body {
   max-width: 600px;
 }
 
-/* Headings */
+
 h1, h2 {
   text-align: center;
   color: #1e3a8a;
   margin-bottom: 25px;
 }
 
-/* Forms */
+
 form {
   display: flex;
   flex-direction: column;
@@ -53,7 +52,7 @@ textarea {
   min-height: 80px;
 }
 
-/* Buttons */
+
 button {
   background-color: #3b82f6;
   color: white;
@@ -69,7 +68,7 @@ button:hover {
   background-color: #2563eb;
 }
 
-/* Task List */
+
 ul {
   list-style: none;
   padding: 0;
@@ -89,7 +88,7 @@ ul li {
   gap: 10px;
 }
 
-/* Task Description */
+
 .task-description {
   font-style: italic;
   white-space: pre-wrap;
@@ -98,7 +97,7 @@ ul li {
   word-break: break-word;
 }
 
-/* Links */
+
 a {
   text-decoration: none;
   color: #3b82f6;
@@ -110,14 +109,14 @@ a:hover {
   color: #1e40af;
 }
 
-/* Centered Back Link */
+
 .back-link {
   display: block;
   text-align: center;
   margin-top: 20px;
 }
 
-/* Inline form for delete/edit buttons */
+
 ul li form {
   display: inline;
 }
@@ -127,7 +126,7 @@ ul li .button-group {
   gap: 10px;
 }
 
-/* Responsive */
+
 @media (max-width: 480px) {
   .container {
     padding: 20px;
