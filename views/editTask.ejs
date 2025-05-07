@@ -9,15 +9,40 @@
     <h2>Edit Task</h2>
 
     <form action="/tasks/<%= task._id %>/edit" method="POST">
-      <input type="text" name="title" value="<%= task.title %>" required />
-      <textarea name="description"><%= task.description %></textarea>
-      <select name="status">
-        <option <%= task.status === 'Pending' ? 'selected' : '' %>>Pending</option>
-        <option <%= task.status === 'In Progress' ? 'selected' : '' %>>In Progress</option>
-        <option <%= task.status === 'Completed' ? 'selected' : '' %>>Completed</option>
-      </select>
-      <button type="submit">Update Task</button>
-    </form>
+  <input type="text" name="title" value="<%= task.title %>" required />
+  
+  <textarea name="description"><%= task.description %></textarea>
+
+  <label>Status:</label>
+  <select name="status">
+    <option <%= task.status === 'Pending' ? 'selected' : '' %>>Pending</option>
+    <option <%= task.status === 'In Progress' ? 'selected' : '' %>>In Progress</option>
+    <option <%= task.status === 'Completed' ? 'selected' : '' %>>Completed</option>
+  </select>
+
+  <label>Priority:</label>
+  <select name="priority">
+    <option <%= task.priority === 'Low' ? 'selected' : '' %>>Low</option>
+    <option <%= task.priority === 'Medium' ? 'selected' : '' %>>Medium</option>
+    <option <%= task.priority === 'High' ? 'selected' : '' %>>High</option>
+  </select>
+
+  <label>Due Date:</label>
+  <input type="date" name="dueDate" value="<%= task.dueDate ? task.dueDate.toISOString().substring(0,10) : '' %>" />
+
+  <label>Assign To:</label>
+  <select name="assignedTo">
+    <option value="">-- Select User --</option>
+    <% users.forEach(user => { %>
+      <option value="<%= user._id %>" <%= task.assignedTo && user._id.equals(task.assignedTo) ? 'selected' : '' %>>
+        <%= user.name %>
+      </option>
+    <% }) %>
+  </select>
+
+  <button type="submit">Update Task</button>
+</form>
+
 
     <a href="/projects/<%= task.projectId %>/tasks">Back</a>
   </div>

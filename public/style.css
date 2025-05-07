@@ -136,3 +136,12 @@ ul li .button-group {
     font-size: 15px;
   }
 }
+
+
+  .highlight {
+    border: 2px solid #1e40af;
+    padding: 8px;
+    margin-bottom: 10px;
+    background-color: #b2ccf6;
+  }
+

@@ -9,15 +9,25 @@
   <h2>Tasks for Project</h2>
 <p>Project ID: <%= projectId %></p>
   <form action="/projects/<%= projectId %>/tasks" method="POST">
-    <input type="text" name="title" placeholder="Title" required />
-    <textarea name="description" placeholder="Description"></textarea>
-    <select name="status">
-      <option>Pending</option>
-      <option>In Progress</option>
-      <option>Completed</option>
-    </select>
-    <button type="submit">Add Task</button>
-  </form>
+  <input type="text" name="title" placeholder="Title" required />
+  <textarea name="description" placeholder="Description"></textarea>
+
+  <label>Assign To:</label>
+  <select name="assignedTo" required>
+    <% users.forEach(user => { %>
+      <option value="<%= user._id %>"><%= user.name %></option>
+    <% }) %>
+  </select>
+
+  <select name="status">
+    <option>Pending</option>
+    <option>In Progress</option>
+    <option>Completed</option>
+  </select>
+
+  <button type="submit">Add Task</button>
+</form>
+
 
   <ul>
   <% tasks.forEach(task => { %>
@@ -36,7 +46,7 @@
 </ul>
 
 
-  <a href="/dashboard">Back to Dashboard</a>
+  <a href="/">Back to Dashboard</a>
   </div>
 </body>
 </html>

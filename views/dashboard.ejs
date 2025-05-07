@@ -1,25 +1,67 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Dashboard</title>
-  <link rel="stylesheet" href="/style.css" />
-</head>
-<body>
+  <head>
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="/style.css" />
+    
+  </head>
+  <body>
     <div class="container">
+      <% if (notifications.length > 0) { %>
+      <h3>Notifications</h3>
+      <ul>
+        <% notifications.forEach(n => { %>
+        <li><%= n.message %></li>
+        <% }) %>
+      </ul>
+      <% } %>
 
-  <h2>Welcome to your Dashboard</h2>
+      <h2>Welcome, <%= user.name %></h2>
+      <form method="GET" action="/">
+        <input
+          type="text"
+          name="search"
+          placeholder="Search tasks..."
+          value="<%= searchQuery %>"
+        />
+        <button type="submit">Search</button>
+      </form>
 
+      <h3>Your Assigned Tasks (<%= assignedTasks.length %>)</h3>
+      <ul>
+        <% assignedTasks.forEach(task => { %>
+        <li class="<%= searchQuery && task.title.toLowerCase().includes(searchQuery.toLowerCase()) ? 'highlight' : '' %>">
+          <strong><%= task.title %></strong><br />
+          <small><%= task.description %></small>
+        </li>
+        <% }) %>
+      </ul>
 
- 
-  <!-- <a href="/projects">Go to My Projects</a> -->
+      <h3>Your Created Tasks (<%= createdTasks.length %>)</h3>
+      <ul>
+        <% createdTasks.forEach(task => { %>
+        <li class="<%= searchQuery && task.title.toLowerCase().includes(searchQuery.toLowerCase()) ? 'highlight' : '' %>">
+          <strong><%= task.title %></strong><br />
+          <small><%= task.description %></small>
+        </li>
+        <% }) %>
+      </ul>
 
-
-  <form action="/projects" method="GET">
-    <button type="submit">View My Projects</button>
-  </form>
-
-  <br />
-  <a href="/logout">Logout</a>
-  </div>
-</body>
+      <h3>Your Overdue Tasks (<%= overdueTasks.length %>)</h3>
+      <ul>
+        <% overdueTasks.forEach(task => { %>
+        <li class="<%= searchQuery && task.title.toLowerCase().includes(searchQuery.toLowerCase()) ? 'highlight' : '' %>">
+          <strong><%= task.title %></strong><br />
+          <small><%= task.description %></small>
+        </li>
+        <% }) %>
+      </ul>
+      
+      <% if (user) { %>
+        <a href="/projects">Create or Assign Tasks</a>
+      <% } %>
+      <br />
+      <a href="/logout">Logout</a>
+    </div>
+  </body>
 </html>
